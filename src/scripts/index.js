@@ -1,7 +1,7 @@
 import logoDarkMode from 'url:../img/logo-black.svg';
 import logoLightMode from 'url:../img/logo-white.svg';
 
-const home = document.querySelector('.section__header');
+const home = document.querySelector('.section-home');
 const nav = document.querySelector('.nav');
 const navList = document.querySelector('.nav__list');
 const navMarker = document.querySelector('.nav__marker');

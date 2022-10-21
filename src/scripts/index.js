@@ -3,7 +3,7 @@ import { ScrollTrigger } from 'gsap/all';
 import logoLightMode from 'url:../img/logo-black.svg';
 import logoDarkMode from 'url:../img/logo-white.svg';
 
-const home = document.querySelector('.section-home');
+const home = document.querySelector('.section__home');
 const nav = document.querySelector('.nav');
 const navList = document.querySelector('.nav__list');
 const navMarker = document.querySelector('.nav__marker');
@@ -31,21 +31,22 @@ gsap.from("#parrot-image", {
         scrub: true
     },
     y: 100,
-    x: -30
+    x: 30
 });
 gsap.from("#flowers-image", {
     scrollTrigger: {
         scrub: true
     },
-    y: 50,
-    x: 50
+    y: -20,
+    x: -90
 });
-gsap.from('#home-header', {
-    scrollTrigger: {
-        scrub: true
-    },
-    x: -100
-})
+// gsap.from('#home-header', {
+//     scrollTrigger: {
+//         scrub: true
+//     },
+//     x: -60,
+//     y: 10
+// })
 
 
 // handle events

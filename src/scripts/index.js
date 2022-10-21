@@ -1,5 +1,7 @@
-import logoDarkMode from 'url:../img/logo-black.svg';
-import logoLightMode from 'url:../img/logo-white.svg';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/all'; 
+import logoLightMode from 'url:../img/logo-black.svg';
+import logoDarkMode from 'url:../img/logo-white.svg';
 
 const home = document.querySelector('.section-home');
 const nav = document.querySelector('.nav');
@@ -21,7 +23,30 @@ const headerObserver = new IntersectionObserver(scrolledNav, {
     threshold: 0.8,
     rootMargin: `${navHeight}px`,
 });
-      
+
+// Gsap: Parallax
+gsap.registerPlugin(ScrollTrigger);
+gsap.from("#parrot-image", {
+    scrollTrigger: {
+        scrub: true
+    },
+    y: 100,
+    x: -30
+});
+gsap.from("#flowers-image", {
+    scrollTrigger: {
+        scrub: true
+    },
+    y: 50,
+    x: 50
+});
+gsap.from('#home-header', {
+    scrollTrigger: {
+        scrub: true
+    },
+    x: -100
+})
+
 
 // handle events
 const handleNavItemClick = function(e){
@@ -37,7 +62,9 @@ const handleNavigationHover = function(e) {
     navMarker.style.left = clickedNavItem.offsetLeft+'px';
     navMarker.style.width = clickedNavItem.offsetWidth + 'px';
 }
-const handleNavigationMouseOut = function(e){
+
+// 
+const returnNavbarItemMarker = function(){
     const activeItem = navList.querySelector('.active');
     navMarker.style.left = activeItem.offsetLeft + 'px';
     navMarker.style.width = activeItem.offsetWidth + 'px';
@@ -49,15 +76,17 @@ const toggleThemeMode = function(){
 }
 
 
+// controllers
 const controlNavigation = function(){
     navList.addEventListener('click', handleNavItemClick);
     navList.addEventListener('mouseover', handleNavigationHover)
-    navList.addEventListener('mouseout', handleNavigationMouseOut);
+    navList.addEventListener('mouseout', returnNavbarItemMarker);
+    returnNavbarItemMarker();
 }
-
 const controlTheme = function(){
     themeBtn.addEventListener('click', toggleThemeMode);
 }
+
 
 const init = function(){
     controlNavigation();
